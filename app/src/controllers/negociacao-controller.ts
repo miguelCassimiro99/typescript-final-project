@@ -3,6 +3,7 @@ import { Negociacao } from '../models/negociacao.js';
 import { Negociacoes } from '../models/negociacoes.js';
 import { MensagemView } from '../views/mensagem-view.js';
 import { NegociacoesView } from '../views/negociacoes-view.js';
+import {logTempoExecucao} from "../decorators/log-tempo-execucao.js";
 
 export class NegociacaoController {
     private inputData: HTMLInputElement;
@@ -19,16 +20,22 @@ export class NegociacaoController {
         this.negociacoesView.update(this.negociacoes);
     }
 
+    /*
+    * Decorators são chamados desta maneira
+    * Mas precisam ser configurados no compilador
+    * para serem executados em tempo de compilação
+    */
+    @logTempoExecucao()
     public adiciona(): void {
         /*
             Zé, você já viu isso?
         */
         const negociacao = Negociacao.criaDe(
-            this.inputData.value, 
+            this.inputData.value,
             this.inputQuantidade.value,
             this.inputValor.value
         );
-     
+
         if (!this.ehDiaUtil(negociacao.data)) {
             this.mensagemView
                 .update('Apenas negociações em dias úteis são aceitas');
@@ -41,7 +48,7 @@ export class NegociacaoController {
     }
 
     private ehDiaUtil(data: Date) {
-        return data.getDay() > DiasDaSemana.DOMINGO 
+        return data.getDay() > DiasDaSemana.DOMINGO
             && data.getDay() < DiasDaSemana.SABADO;
     }
 
