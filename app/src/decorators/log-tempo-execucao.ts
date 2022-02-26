@@ -1,4 +1,4 @@
-export function logTempoExecucao() {
+export function logTempoExecucao(emSegundos: boolean = false) {
     return function(
         target: any,
         propertyKey: string,
@@ -14,7 +14,7 @@ export function logTempoExecucao() {
             * */
             const retorno = metodoOriginal.apply(this, args);
             const t2 = performance.now();
-            console.log(`Método ${propertyKey} executou em ${(t2 - t1)/1000} s`);
+            console.log(`Método ${propertyKey} executou em ${ emSegundos ? (t2 - t1)/1000 : (t2 - t1) } ${ emSegundos ? 'segundos' : 'milisegundos'}`);
             retorno;
 
             /*

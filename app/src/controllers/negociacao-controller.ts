@@ -4,13 +4,14 @@ import { Negociacoes } from '../models/negociacoes.js';
 import { MensagemView } from '../views/mensagem-view.js';
 import { NegociacoesView } from '../views/negociacoes-view.js';
 import {logTempoExecucao} from "../decorators/log-tempo-execucao.js";
+import {inspect} from "../decorators/inspect.js";
 
 export class NegociacaoController {
     private inputData: HTMLInputElement;
     private inputQuantidade: HTMLInputElement;
     private inputValor: HTMLInputElement;
     private negociacoes = new Negociacoes();
-    private negociacoesView = new NegociacoesView('#negociacoesView', true);
+    private negociacoesView = new NegociacoesView('#negociacoesView');
     private mensagemView = new MensagemView('#mensagemView');
 
     constructor() {
@@ -25,7 +26,7 @@ export class NegociacaoController {
     * Mas precisam ser configurados no compilador
     * para serem executados em tempo de compilação
     */
-    @logTempoExecucao()
+    @logTempoExecucao(true)
     public adiciona(): void {
         /*
             Zé, você já viu isso?
