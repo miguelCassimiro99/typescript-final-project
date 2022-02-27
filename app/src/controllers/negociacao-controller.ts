@@ -3,6 +3,7 @@ import { Negociacao } from '../models/negociacao.js';
 import { Negociacoes } from '../models/negociacoes.js';
 import { MensagemView } from '../views/mensagem-view.js';
 import { NegociacoesView } from '../views/negociacoes-view.js';
+import {NegociacoesService} from "../services/negociacoes-service.js";
 import {logTempoExecucao} from "../decorators/log-tempo-execucao.js";
 import {inspect} from "../decorators/inspect.js";
 import {domInjector} from "../decorators/dom-injector.js";
@@ -20,6 +21,7 @@ export class NegociacaoController {
     private negociacoes = new Negociacoes();
     private negociacoesView = new NegociacoesView('#negociacoesView');
     private mensagemView = new MensagemView('#mensagemView');
+    private service = new NegociacoesService();
 
     constructor() {
         this.negociacoesView.update(this.negociacoes);
@@ -54,24 +56,14 @@ export class NegociacaoController {
     }
 
     public importaDados(): void {
-        fetch('http://localhost:8080/dados')
-            .then(res => res.json())
-            .then((dados: Array<any>) => {
-                return dados.map(dados => {
-                    return new Negociacao(
-                        new Date,
-                        dados.vezes,
-                        dados.montante,
-                    )
+            this.service.obterNegociacoesDoDia()
+                .then(negociacoes => {
+                    negociacoes.forEach(n => {
+                        this.negociacoes.adiciona(n);
+                    })
+                    this.negociacoesView.update(this.negociacoes);
                 })
-            })
-            .then(negociacoes => {
-                negociacoes.forEach(n => {
-                    this.negociacoes.adiciona(n);
-                })
-                this.negociacoesView.update(this.negociacoes);
-            })
-            .catch(err => {throw Error('Não foi possível comunicar com API')});
+                .catch(err => {throw Error('Não foi possível comunicar com API')});
     }
 
     private ehDiaUtil(data: Date) {
