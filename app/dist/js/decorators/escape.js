@@ -3,7 +3,6 @@ export function escape(target, propertyKey, descriptor) {
     descriptor.value = function (...args) {
         let retorno = metodoOriginal.apply(this, args);
         if (typeof retorno === 'string') {
-            console.log(`@escape no constructor ${this.constructor.name}. Class: ${propertyKey}`);
             retorno = retorno
                 .replace(/<script>[\s\S]*?<\/script>/, '');
         }
