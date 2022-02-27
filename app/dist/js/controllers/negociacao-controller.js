@@ -9,6 +9,7 @@ import { Negociacao } from '../models/negociacao.js';
 import { Negociacoes } from '../models/negociacoes.js';
 import { MensagemView } from '../views/mensagem-view.js';
 import { NegociacoesView } from '../views/negociacoes-view.js';
+import { NegociacoesService } from "../services/negociacoes-service.js";
 import { logTempoExecucao } from "../decorators/log-tempo-execucao.js";
 import { inspect } from "../decorators/inspect.js";
 import { domInjector } from "../decorators/dom-injector.js";
@@ -17,6 +18,7 @@ export class NegociacaoController {
         this.negociacoes = new Negociacoes();
         this.negociacoesView = new NegociacoesView('#negociacoesView');
         this.mensagemView = new MensagemView('#mensagemView');
+        this.service = new NegociacoesService();
         this.negociacoesView.update(this.negociacoes);
     }
     adiciona() {
@@ -29,6 +31,16 @@ export class NegociacaoController {
         this.negociacoes.adiciona(negociacao);
         this.limparFormulario();
         this.atualizaView();
+    }
+    importaDados() {
+        this.service.obterNegociacoesDoDia()
+            .then(negociacoes => {
+            negociacoes.forEach(n => {
+                this.negociacoes.adiciona(n);
+            });
+            this.negociacoesView.update(this.negociacoes);
+        })
+            .catch(err => { throw Error('Não foi possível comunicar com API'); });
     }
     ehDiaUtil(data) {
         return data.getDay() > DiasDaSemana.DOMINGO
