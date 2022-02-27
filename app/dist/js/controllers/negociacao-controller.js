@@ -30,6 +30,22 @@ export class NegociacaoController {
         this.limparFormulario();
         this.atualizaView();
     }
+    importaDados() {
+        fetch('http://localhost:8080/dados')
+            .then(res => res.json())
+            .then((dados) => {
+            return dados.map(dados => {
+                return new Negociacao(new Date, dados.vezes, dados.montante);
+            });
+        })
+            .then(negociacoes => {
+            negociacoes.forEach(n => {
+                this.negociacoes.adiciona(n);
+            });
+            this.negociacoesView.update(this.negociacoes);
+        })
+            .catch(err => { throw Error('Não foi possível comunicar com API'); });
+    }
     ehDiaUtil(data) {
         return data.getDay() > DiasDaSemana.DOMINGO
             && data.getDay() < DiasDaSemana.SABADO;
