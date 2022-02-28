@@ -13,6 +13,7 @@ import { NegociacoesService } from "../services/negociacoes-service.js";
 import { logTempoExecucao } from "../decorators/log-tempo-execucao.js";
 import { inspect } from "../decorators/inspect.js";
 import { domInjector } from "../decorators/dom-injector.js";
+import { imprimir } from "../utils/imprimir.js";
 export class NegociacaoController {
     constructor() {
         this.negociacoes = new Negociacoes();
@@ -29,11 +30,21 @@ export class NegociacaoController {
             return;
         }
         this.negociacoes.adiciona(negociacao);
+        imprimir(negociacao, this.negociacoes);
         this.limparFormulario();
         this.atualizaView();
     }
     importaDados() {
-        this.service.obterNegociacoesDoDia()
+        this.service
+            .obterNegociacoesDoDia()
+            .then(negociacoes => {
+            return negociacoes.filter(negociacaoDeHoje => {
+                return !this.negociacoes
+                    .lista()
+                    .some(negociacao => negociacao
+                    .ehIgual(negociacaoDeHoje));
+            });
+        })
             .then(negociacoes => {
             negociacoes.forEach(n => {
                 this.negociacoes.adiciona(n);
@@ -70,3 +81,4 @@ __decorate([
     inspect,
     logTempoExecucao(true)
 ], NegociacaoController.prototype, "adiciona", null);
+//# sourceMappingURL=negociacao-controller.js.map

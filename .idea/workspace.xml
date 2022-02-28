@@ -7,7 +7,13 @@
     <list default="true" id="75f52eef-2cd0-4ece-bc4c-d3b61c25a567" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/dist/js/controllers/negociacao-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/dist/js/controllers/negociacao-controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dist/js/models/negociacao.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/dist/js/models/negociacao.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dist/js/models/negociacoes.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/dist/js/models/negociacoes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/controllers/negociacao-controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/controllers/negociacao-controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/models/negociacao.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/models/negociacao.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/models/negociacoes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/models/negociacoes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/services/negociacoes-service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/services/negociacoes-service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +53,7 @@
       <option name="presentableId" value="Default" />
       <updated>1645879701870</updated>
       <workItem from="1645879702939" duration="16658000" />
-      <workItem from="1646000152027" duration="3634000" />
+      <workItem from="1646000152027" duration="11390000" />
     </task>
     <servers />
   </component>
@@ -55,6 +61,10 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="222" y="116" width="374" height="569" key="#com.intellij.ide.util.MemberChooser" timestamp="1646011765139">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="222" y="116" width="374" height="569" key="#com.intellij.ide.util.MemberChooser/0.27.1366.741@0.27.1366.741" timestamp="1646011765139" />
     <state width="797" height="172" key="GridCell.Tab.0.bottom" timestamp="1645928574835">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
@@ -71,9 +81,9 @@
       <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state width="797" height="172" key="GridCell.Tab.0.right/0.27.1366.741@0.27.1366.741" timestamp="1645928574835" />
-    <state x="73" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1646001137286">
+    <state x="73" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1646014167485">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state x="73" y="89" width="672" height="678" key="search.everywhere.popup/0.27.1366.741@0.27.1366.741" timestamp="1646001137286" />
+    <state x="73" y="89" width="672" height="678" key="search.everywhere.popup/0.27.1366.741@0.27.1366.741" timestamp="1646014167485" />
   </component>
 </project>
