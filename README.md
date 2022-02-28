@@ -72,4 +72,4 @@ It will run the watcher on TS to compile and detect errors and the files server,
 
 Miguel Cassimiro - miguel.cassimiro99@gmail.com - [Github](https://github.com/miguelCassimiro99)
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [Typescript: parte III](https://github.com/miguelCassimiro99/typescript-final-project)
